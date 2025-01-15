@@ -25,7 +25,7 @@ db.connect((err) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "C:/sharedstorage");
+        cb(null, "C:/expressjs-dbresearch/image");
     },
     filename: (req, file, cb) => {
         const uniqueName = "f" + uuidv4().replace(/-/g, '') + path.extname(file.originalname);
@@ -42,8 +42,10 @@ router.post('/postparticipant', upload.single('file'), (req, res) => {
         return res.status(400).json({ error: "Any fields cannot be null" });
     }
     const sqls = "INSERT INTO participant(id_pool, email_user, photo, status) VALUES (?,?,?,?)";
-
+    
     const photoPath = file ? file.path : null;
+    
+    
 
     db.query(sqls, [id_pool, email_user, photoPath, 'PENDING'], (err, results) => {
         if (err) {
