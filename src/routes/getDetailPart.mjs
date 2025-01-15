@@ -12,7 +12,7 @@ const db = mysql.createConnection({
     database: 'dbresearch'
 });
 
-router.use('/getdetailpart/:id', (req,res)=>{
+router.get('/getdetailpart/:id', (req,res)=>{
     const id = req.params.id
     const sqls = `SELECT 
                     participant.*, 

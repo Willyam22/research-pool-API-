@@ -38,9 +38,9 @@ router.get('/veripart/:id/:email', (req,res)=>{
         if(results.length === 0 ){
             return res.status(401).send("not participate")
         }else{
-            const photo = results[0]?.photo
+            const photo = results[0]?.id
             const status = results[0]?.status
-            return res.status(201).json({msg:"participated", photo, status})
+            return res.status(201).json({msg:"participated", id, status})
         }
     })
 })

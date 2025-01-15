@@ -25,7 +25,7 @@ db.connect((err) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "C:/Users/kibo/AndroidStudioProjects/ResearcherPool/app/src/main/res/drawable");
+        cb(null, "C:/sharedstorage");
     },
     filename: (req, file, cb) => {
         const uniqueName = "f" + uuidv4().replace(/-/g, '') + path.extname(file.originalname);

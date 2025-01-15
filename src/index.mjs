@@ -14,6 +14,8 @@
     import getCount from "./routes/getCount.mjs"
     import verifyres from "./routes/verifyres.mjs"
     import getVerifpart from "./routes/getVerifpart.mjs"
+    import getGambar from "./routes/getGambar.mjs"
+    import getCountR from "./routes/getCountR.mjs"
     import bodyParser from "body-parser";
 
     const app = express();
@@ -36,6 +38,8 @@
     app.use('/api', getCount)
     app.use('/api', verifyres)
     app.use('/api', getVerifpart)
+    app.use('/api', getGambar)
+    app.use('/api', getCountR)
 
     
     app.listen(PORT, () => {

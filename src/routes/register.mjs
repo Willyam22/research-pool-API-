@@ -27,19 +27,6 @@ router.post('/register', (req, res) => {
         return res.status(400).json({ error: "all fields are required" });
     }
 
-    const sql1 = `SELECT * 
-                FROM user
-                JOIN research ON user.email = research.email
-                WHERE user.email = ?;`
-    db.query(sql1, [email], (err, results)=>{
-        if(err){
-            return res.status(500).send('error fetching')
-        }
-        if(results.length === 0){
-            
-        }
-    })
-
     if (type == "research") {
         const sqls = 'SELECT * FROM researcher WHERE email = ?';
         db.query(sqls, [email], (err, results) => {
@@ -47,6 +34,7 @@ router.post('/register', (req, res) => {
                 return res.status(500).send('error fetching');
             }
             if (results.length === 0) {
+                
                 const sql = 'INSERT INTO researcher (email, username, password) VALUES (?, ?, ?)';
                 db.query(sql, [email, username, password], (err, results) => {
                     if (err) {
